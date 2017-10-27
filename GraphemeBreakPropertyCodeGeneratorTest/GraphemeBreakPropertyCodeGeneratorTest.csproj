@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.10.9" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\GraphemeBreakPropertyCodeGenerator\GraphemeBreakProperty.cs" Link="GraphemeBreakProperty.cs" />
+    <Compile Include="..\GraphemeBreakPropertyCodeGenerator\PropertyItem.cs" Link="PropertyItem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="BenchmarkDotNet.Artifacts/**" />
+  </ItemGroup>
+
+</Project>
