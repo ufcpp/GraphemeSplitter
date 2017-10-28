@@ -5,7 +5,7 @@ using static GraphemeSplitter.GraphemeBreakProperty;
 
 namespace GraphemeSplitter
 {
-    public static partial class StringExtensions
+    public static partial class StringSplitter
     {
         /// <summary>
         /// Enumerate Unicode grapheme clusters.

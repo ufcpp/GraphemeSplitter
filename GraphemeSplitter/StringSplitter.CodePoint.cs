@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GraphemeSplitter
 {
-    public static partial class StringExtensions
+    public static partial class StringSplitter
     {
         /// <summary>
         /// Enumerate Unicode code points.
