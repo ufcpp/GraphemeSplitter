@@ -79,8 +79,11 @@ namespace GraphemeSplitterTest
         [Fact]
         public void GetGraphemesVariationSelector() => GetGraphemes("吉󠄀𠮟󠄀葛葛󠄀葛󠄁", "吉󠄀", "𠮟󠄀", "葛", "葛󠄀", "葛󠄁");
 
+        [Fact]
+        public void GetGraphemesHangul() => GetGraphemes("안녕하세요", "안", "녕", "하", "세", "요");
+
         //[Fact]
-        //public void GetGraphemesHangul() => GetGraphemes("", "");
+        //public void GetGraphemesHindi() => GetGraphemes("नमस्ते", "न", "म", "स्ते"); // fail. स्ते → स्, ते. need help
 
         //[Fact]
         //public void GetGraphemesFlagSequence() => GetGraphemes("", "");
