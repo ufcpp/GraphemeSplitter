@@ -10,7 +10,7 @@ namespace GraphemeSplitter
         static GraphemeBreakProperty GetByLinearSearch(PropertyItem[] ranges, int value)
         {
             var f = ranges.FirstOrDefault(r => r.Min <= value && value <= r.Max);
-            if (f.Min == 0) return GraphemeBreakProperty.Invalid;
+            if (f.Min == 0) return GraphemeBreakProperty.Other;
             else return f.Property;
         }
 
@@ -28,7 +28,7 @@ namespace GraphemeSplitter
                 else return r.Property;
             }
 
-            return GraphemeBreakProperty.Invalid;
+            return GraphemeBreakProperty.Other;
 
         }
     }

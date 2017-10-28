@@ -1,7 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Configurations>$(Configurations);DebugV9;ReleaseV9;DebugV10;ReleaseV10</Configurations>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV10</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV10</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='DebugV10'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV10</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='ReleaseV10'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV10</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='DebugV9'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV9</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='ReleaseV9'">
+    <DefineConstants>$(DefineConstants);UnicodeVersionV9</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\GraphemeBreakPropertyCodeGenerator\GraphemeBreakProperty.cs" Link="GraphemeBreakProperty.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.4.0</Version>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>
