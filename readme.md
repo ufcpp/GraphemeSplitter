@@ -10,6 +10,29 @@ https://www.nuget.org/packages/GraphemeSplitter/
 Install-Package GraphemeSplitter
 ```
 
+## Sample
+
+```cs
+using GraphemeSplitter;
+using static System.Console;
+using static System.String;
+
+public partial class Program
+{
+    static string Split(string s) => Join(", ", s.GetGraphemes());
+
+    static void Main()
+    {
+        WriteLine(Split("👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦")); // 👨‍👨‍👧‍👦, 👩‍👩‍👧‍👦, 👨‍👨‍👧‍👦
+    }
+}
+```
+
+[Web Sample](tree/master/RazorPageSample):
+
+
+![Razor Page Sample](doc/RazorPageSample.png)
+
 ## Acknowledgements
 
 This library is indluenced by

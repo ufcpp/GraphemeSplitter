@@ -15,6 +15,10 @@
     @if (Model.Text == null)
     {
         <p>
+            Split Unicode text int grapheme clusters.
+            Powered by: <a href="https://github.com/ufcpp/GraphemeSplitter">GraphemeSplitter</a>
+        </p>
+        <p>
             samples:
         </p>
         <ul>
@@ -35,16 +39,16 @@
             <tr>
                 <th>grapheme</th>
                 <th>#UTF-8</th>
-                <th>UTF-16 sequence</th>
                 <th>UTF-32 sequence</th>
+                <th>UTF-16 sequence</th>
             </tr>
             @foreach (var grapheme in Model.SplittedTexts)
             {
             <tr>
                 <td>@grapheme</td>
                 <td>@System.Text.Encoding.UTF8.GetByteCount(grapheme)</td>
-                <td>@string.Join(", ", grapheme.Select(c => ((int)c).ToString("X")))</td>
                 <td>@string.Join(", ", GraphemeSplitter.StringSplitter.GetCodePoints(grapheme).Select(c => c.codePoint.ToString("X")))</td>
+                <td>@string.Join(", ", grapheme.Select(c => ((int)c).ToString("X")))</td>
             </tr>
             }
         </table>
