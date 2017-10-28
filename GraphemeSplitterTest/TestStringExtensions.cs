@@ -9,6 +9,35 @@ namespace GraphemeSplitterTest
     public class TestStringExtensions
     {
         [Fact]
+        public void CodePointAt()
+        {
+            var s = "aáαℵАあ亜🐭👩𩸽";
+            var expected = new (int count, uint cp)[]
+            {
+                (1, 'a'),
+                (1, 'á'),
+                (1, 'α'),
+                (1, 'ℵ'),
+                (1, 'А'),
+                (1, 'あ'),
+                (1, '亜'),
+                (2, (uint)char.ConvertToUtf32("🐭", 0)),
+                (2, (uint)char.ConvertToUtf32("👩", 0)),
+                (2, (uint)char.ConvertToUtf32("𩸽", 0)),
+            };
+
+            var i = 0;
+            foreach (var e in expected)
+            {
+                var (count, cp) = s.CodePointAt(i);
+
+                Assert.Equal(e.count, count);
+                Assert.Equal(e.cp, cp);
+                i += count;
+            }
+        }
+
+        [Fact]
         public void GetCodePoints()
         {
             var s = "aáαℵАあ亜🐭👩𩸽";

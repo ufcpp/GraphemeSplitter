@@ -67,25 +67,7 @@ namespace GraphemeSplitter
                 return count;
             }
 
-            private (int count, uint cp) CodePointAt(int index) => CodePointAt(_str, index);
-
-            private static (int count, uint cp) CodePointAt(string str, int index)
-            {
-                var c = str[index];
-
-                if (char.IsHighSurrogate(c))
-                {
-                    if (index + 1 >= str.Length) throw new IndexOutOfRangeException();
-
-                    var x = (c & 0b00000011_11111111U) + 0b100_0000;
-                    x <<= 10;
-                    c = str[index + 1];
-                    x |= (c & 0b00000011_11111111U);
-
-                    return (2, x);
-                }
-                return (1, c);
-            }
+            private (int count, uint cp) CodePointAt(int index) => _str.CodePointAt(index);
 
             private bool ShouldBreak(uint prevCp, uint cp)
             {

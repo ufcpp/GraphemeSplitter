@@ -49,25 +49,11 @@ namespace GraphemeSplitter
                 _index += _count;
                 if (_index >= _str.Length) return false;
 
-                var c = _str[_index];
-                if (char.IsHighSurrogate(c))
-                {
-                    if (_index + 1 >= _str.Length) return false;
+                var (c, cp) = _str.CodePointAt(_index);
+                _count = (byte)c;
+                _codePoint = cp;
 
-                    var x = (c & 0b00000011_11111111U) + 0b100_0000;
-                    x <<= 10;
-                    c = _str[_index + 1];
-                    x |= (c & 0b00000011_11111111U);
-
-                    _codePoint = x;
-                    _count = 2;
-                }
-                else
-                {
-                    _codePoint = c;
-                    _count = 1;
-                }
-                return true;
+                return c != 0;
             }
 
             /// <summary><see cref="IEnumerator.Reset"/></summary>
