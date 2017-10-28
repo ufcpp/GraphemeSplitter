@@ -1,0 +1,53 @@
+﻿@page
+@model RazorPageSample.Pages.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Grapheme Splitter</title>
+</head>
+<body>
+
+    @if (Model.Text == null)
+    {
+        <p>
+            samples:
+        </p>
+        <ul>
+            <li><a href="/?s=🐁🐂🐅🐇🐉🐍🐎🐑🐒🐓🐕🐗">🐁🐂🐅🐇🐉🐍🐎🐑🐒🐓🐕🐗</a></li>
+            <li><a href="/?s=👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦">👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦</a></li>
+            <li><a href="/?s=(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)">(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)</a></li>
+            <li><a href="/?s=नमस्ते">नमस्ते</a></li>
+            <li><a href="/?s=안녕하세요">안녕하세요</a></li>
+        </ul>
+    }
+    else
+    {
+        <p>
+            original text: @Model.Text
+        </p>
+        <table border="1">
+            <caption>graphemes</caption>
+            <tr>
+                <th>grapheme</th>
+                <th>#UTF-8</th>
+                <th>UTF-16 sequence</th>
+                <th>UTF-32 sequence</th>
+            </tr>
+            @foreach (var grapheme in Model.SplittedTexts)
+            {
+            <tr>
+                <td>@grapheme</td>
+                <td>@System.Text.Encoding.UTF8.GetByteCount(grapheme)</td>
+                <td>@string.Join(", ", grapheme.Select(c => ((int)c).ToString("X")))</td>
+                <td>@string.Join(", ", GraphemeSplitter.StringSplitter.GetCodePoints(grapheme).Select(c => c.codePoint.ToString("X")))</td>
+            </tr>
+            }
+        </table>
+    }
+    </body>
+</html>
