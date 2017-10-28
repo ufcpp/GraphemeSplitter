@@ -6,11 +6,14 @@ namespace GraphemeSplitter
 {
     public static partial class StringExtensions
     {
+        /// <summary>
+        /// Enumerate Unicode code points.
+        /// </summary>
         public static CodePointEnumerable GetCodePoints(this string s) => new CodePointEnumerable(s);
 
         public struct CodePointEnumerable : IEnumerable<(int index, int count, uint codePoint)>
         {
-            private readonly string _str;
+            internal readonly string _str;
             public CodePointEnumerable(string str) => _str = str;
             public CodePointEnumerator GetEnumerator() => new CodePointEnumerator(_str);
             IEnumerator<(int index, int count, uint codePoint)> IEnumerable<(int index, int count, uint codePoint)>.GetEnumerator() => GetEnumerator();
@@ -22,7 +25,7 @@ namespace GraphemeSplitter
         /// </summary>
         public struct CodePointEnumerator : IEnumerator<(int index, int count, uint codePoint)>
         {
-            private readonly string _str;
+            internal readonly string _str;
             private int _index;
             private byte _count;
             private uint _codePoint;
@@ -44,7 +47,6 @@ namespace GraphemeSplitter
             public bool MoveNext()
             {
                 _index += _count;
-
                 if (_index >= _str.Length) return false;
 
                 var c = _str[_index];
