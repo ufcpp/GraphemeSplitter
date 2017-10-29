@@ -65,9 +65,8 @@ The difference is:
 
 sequence       | original | implemented
 --- | --- | ---
-'👩' '🏻' ZWJ '👩' | × × ×    | × × ×
-'a' '🏻' ZWJ '👩'  | ÷ ÷ ×    | ÷ × ×
-🇯🇵🇺🇸 | × ÷ × | × × ×
+à🏻‍ (U+61, U+300, U+1F3FB)  | × ÷    | × ×
+🇯🇵🇺🇸 (U+1F1EF, U+1F1F5, U+1F1FA, U+1F1F8) | × ÷ × | × × ×
 
 (where ÷ and × means boundary and no bounadry respectively.)
 
