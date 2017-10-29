@@ -72,7 +72,7 @@ à🏻‍ (U+61, U+300, U+1F3FB)  | × ÷    | × ×
 
 ## Acknowledgements
 
-This library is indluenced by
+This library is influenced by
 - https://github.com/devongovett/grapheme-breaker
 - https://github.com/orling/grapheme-splitter
 - https://github.com/unicode-rs/unicode-segmentation
