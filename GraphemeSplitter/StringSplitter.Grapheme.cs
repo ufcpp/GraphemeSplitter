@@ -87,9 +87,11 @@ namespace GraphemeSplitter
             /// GB12/GB13 RI × RI
             ///
             /// e.g.
-            /// sequence       | original | implemented
-            /// '👩' ZWJ '👩' | ×        | ×
-            /// 'a' ZWJ '👩'  | ÷        | ×
+            /// sequence | original | implemented
+            /// --- | --- | ---
+            /// '👩' '🏻' ZWJ '👩' | × × ×    | × × ×
+            /// 'a' '🏻' ZWJ '👩'  | ÷ ÷ ×    | ÷ × ×
+            /// 🇯🇵🇺🇸 | × ÷ × | × × ×
             /// </remarks>
             /// <param name="prevCp"></param>
             /// <param name="cp"></param>
