@@ -61,7 +61,7 @@ implemented:
 - GB10 … (E_Base | EBG | Extend) × E_Modifier
 - GB12/GB13 … RI × RI
 
-The difference is:
+Difference is:
 
 sequence       | original | implemented
 --- | --- | ---
