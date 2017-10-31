@@ -7,13 +7,14 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Nobuyuki Iwanaga</Authors>
     <Company />
-    <PackageReleaseNotes />
+    <PackageReleaseNotes>Optimization (GetGraphemeBreakProperty method is changed from a switch to a binary-search if)</PackageReleaseNotes>
     <Description>A C# implementation of the Unicode grapheme cluster breaking algorithm</Description>
     <PackageTags>Unicode, grapheme, grapheme cluster</PackageTags>
     <RepositoryUrl>https://github.com/ufcpp/GraphemeSplitter</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ufcpp/GraphemeSplitter</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ufcpp/GraphemeSplitter/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Nobuyuki Iwanaga</Copyright>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

@@ -31,7 +31,7 @@ namespace GraphemeBreakPropertyCodeGenerator
             using (var w = new StreamWriter(string.Format(pathFormat, "GetGraphemeBreakProperty" + version)))
             {
                 w.WriteLine("#if UnicodeVersion" + version);
-                GenerateSwitchCode(items, "Character", "GetGraphemeBreakProperty", w);
+                GenerateBinaryIfCode(items, "Character", "GetGraphemeBreakProperty", w);
                 w.WriteLine("#endif");
             }
         }
