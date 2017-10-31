@@ -16,9 +16,10 @@ namespace GraphemeSplitter
 
             for (int i = 0; i < Loops; i++)
             {
-                var v = r.Next() & Mask;
+                var v = (uint)r.Next() & Mask;
 
                 Assert.Equal(GetBySwitch(v), GetByIf(v));
+                Assert.Equal(GetBySwitch(v), GetByBinaryIf(v));
                 Assert.Equal(GetBySwitch(v), GetByLinearSearch(v));
                 Assert.Equal(GetBySwitch(v), GetByBinarySearch(v));
             }
@@ -32,7 +33,7 @@ namespace GraphemeSplitter
             var r = new Random(1);
             for (int i = 0; i < Loops; i++)
             {
-                var v = r.Next() % Mask;
+                var v = (uint)r.Next() % Mask;
                 GetByLinearSearch(v);
             }
         }
@@ -43,7 +44,7 @@ namespace GraphemeSplitter
             var r = new Random(1);
             for (int i = 0; i < Loops; i++)
             {
-                var v = r.Next() % Mask;
+                var v = (uint)r.Next() % Mask;
                 GetByBinarySearch(v);
             }
         }
@@ -54,8 +55,19 @@ namespace GraphemeSplitter
             var r = new Random(1);
             for (int i = 0; i < Loops; i++)
             {
-                var v = r.Next() % Mask;
+                var v = (uint)r.Next() % Mask;
                 GetBySwitch(v);
+            }
+        }
+
+        [Benchmark]
+        public void BySwitchWhen()
+        {
+            var r = new Random(1);
+            for (int i = 0; i < Loops; i++)
+            {
+                var v = (uint)r.Next() % Mask;
+                GetBySwitchWhen(v);
             }
         }
 
@@ -66,8 +78,19 @@ namespace GraphemeSplitter
             var r = new Random(1);
             for (int i = 0; i < Loops; i++)
             {
-                var v = r.Next() % Mask;
+                var v = (uint)r.Next() % Mask;
                 GetByIf(v);
+            }
+        }
+
+        [Benchmark]
+        public void ByBinaryIf()
+        {
+            var r = new Random(1);
+            for (int i = 0; i < Loops; i++)
+            {
+                var v = (uint)r.Next() % Mask;
+                GetByBinaryIf(v);
             }
         }
     }

@@ -4,17 +4,17 @@ namespace GraphemeSplitter
 {
     public partial class Benchmark
     {
-        static GraphemeBreakProperty GetByLinearSearch(int value) => GetByLinearSearch(Items, value);
-        static GraphemeBreakProperty GetByBinarySearch(int value) => GetByBinarySearch(Items, value);
+        static GraphemeBreakProperty GetByLinearSearch(uint value) => GetByLinearSearch(Items, value);
+        static GraphemeBreakProperty GetByBinarySearch(uint value) => GetByBinarySearch(Items, value);
 
-        static GraphemeBreakProperty GetByLinearSearch(PropertyItem[] ranges, int value)
+        static GraphemeBreakProperty GetByLinearSearch(PropertyItem[] ranges, uint value)
         {
             var f = ranges.FirstOrDefault(r => r.Min <= value && value <= r.Max);
-            if (f.Min == 0) return GraphemeBreakProperty.Other;
+            if (f.Max == 0) return GraphemeBreakProperty.Other;
             else return f.Property;
         }
 
-        static GraphemeBreakProperty GetByBinarySearch(PropertyItem[] ranges, int value)
+        static GraphemeBreakProperty GetByBinarySearch(PropertyItem[] ranges, uint value)
         {
             int lower = 0;
             int upper = ranges.Length - 1;

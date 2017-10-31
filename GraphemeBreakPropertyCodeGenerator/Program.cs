@@ -46,8 +46,14 @@ namespace GraphemeBreakPropertyCodeGenerator
             using (var w = new StreamWriter(string.Format(benchmarkPathFormat, "switch")))
                 GenerateSwitchCode(v10Items, benchmarkTypeName, "GetBySwitch", w);
 
+            using (var w = new StreamWriter(string.Format(benchmarkPathFormat, "switchwhen")))
+                GenerateSwitchWhenCode(v10Items, benchmarkTypeName, "GetBySwitchWhen", w);
+
+            using (var w = new StreamWriter(string.Format(benchmarkPathFormat, "binif")))
+                GenerateBinaryIfCode(v10Items, benchmarkTypeName, "GetByBinaryIf", w);
+
             using (var w = new StreamWriter(string.Format(benchmarkPathFormat, "if")))
-                GenerateIfCode(v10Items, benchmarkTypeName, "GetByIf", w);
+                GenerateLinearIfCode(v10Items, benchmarkTypeName, "GetByIf", w);
 
             using (var w = new StreamWriter(string.Format(benchmarkPathFormat, "items")))
                 GenerateItemsCode(v10Items, benchmarkTypeName, w);
@@ -97,8 +103,85 @@ namespace {@namespace}
 }");
         }
 
+        static void GenerateSwitchWhenCode(PropertyItem[] items, string typeName, string methodName, StreamWriter w)
+        {
+            GenerateHeader(typeName, methodName, w);
 
-        static void GenerateIfCode(PropertyItem[] items, string typeName, string methodName, StreamWriter w)
+            w.WriteLine(@"            switch (codePoint)
+            {");
+
+            var groups = items.GroupBy(x => x.Property);
+
+            int i = 0;
+            foreach (var g in groups)
+            {
+                foreach (var item in g)
+                {
+                    if (item.Min == item.Max)
+                    {
+                        w.WriteLine($"                case {item.Min}:");
+                    }
+                    else
+                    {
+                        w.WriteLine($"                case uint i{i} when {item.Min} <= i{i} && i{i} <= {item.Max}:");
+                        ++i;
+                    }
+                }
+                w.WriteLine($"                    return {g.Key};");
+            }
+
+            w.WriteLine(@"                default: return Other;
+            }
+        }
+    }
+}");
+        }
+
+        static void GenerateBinaryIfCode(PropertyItem[] items, string typeName, string methodName, StreamWriter w)
+        {
+            GenerateHeader(typeName, methodName, w);
+
+            var sorted = items.OrderBy(x => x.Min).ToArray();
+
+            void f(int lower, int upper, int nest)
+            {
+                var ws = new string(' ', nest * 4);
+
+                if (lower == upper)
+                {
+                    var r = sorted[lower];
+                    w.WriteLine($"{ws}if ({r.Min} <= codePoint && codePoint <= {r.Max}) return {r.Property};");
+                    w.WriteLine($"{ws}else return Other;");
+                }
+                else if (lower + 1 == upper)
+                {
+                    var r = sorted[lower];
+                    w.WriteLine($"{ws}if ({r.Min} <= codePoint && codePoint <= {r.Max}) return {r.Property};");
+                    r = sorted[upper];
+                    w.WriteLine($"{ws}else if ({r.Min} <= codePoint && codePoint <= {r.Max}) return {r.Property};");
+                    w.WriteLine($"{ws}else return Other;");
+                }
+                else
+                {
+                    var middle = lower + (upper - lower) / 2;
+                    var r = sorted[middle];
+
+                    w.WriteLine($"{ws}if (codePoint < {r.Min})");
+                    f(lower, middle - 1, nest + 1);
+                    w.WriteLine($"{ws}else if ({r.Max} < codePoint)");
+                    f(middle + 1, upper, nest + 1);
+                    w.WriteLine($"{ws}else return {r.Property};");
+                }
+            }
+
+            f(0, sorted.Length - 1, 3);
+
+            w.WriteLine(@"        }
+    }
+}");
+        }
+
+        static void GenerateLinearIfCode(PropertyItem[] items, string typeName, string methodName, StreamWriter w)
         {
             GenerateHeader(typeName, methodName, w);
 
