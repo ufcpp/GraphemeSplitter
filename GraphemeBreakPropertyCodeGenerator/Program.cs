@@ -38,7 +38,14 @@ namespace GraphemeBreakPropertyCodeGenerator
 
         private static void GenerateBenchmarkCode()
         {
-            var v10Items = Loader.LoadProperties(UnicodeVersion.V10);
+            var v10Items = Loader.LoadProperties(UnicodeVersion.V10)
+            //.Take(1000).ToArray()
+            //.Take(500).ToArray()
+            //.Take(200).ToArray()
+            //.Take(100).ToArray()
+            //.Take(50).ToArray()
+            //.Take(20).ToArray()
+            ;
 
             const string benchmarkPathFormat = "../GraphemeBreakPropertyCodeGeneratorTest/Benchmark.{0}.cs";
             const string benchmarkTypeName = "Benchmark";
