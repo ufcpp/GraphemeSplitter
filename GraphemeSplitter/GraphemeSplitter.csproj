@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;net35;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;net35</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Configurations>$(Configurations);DebugV9;ReleaseV9;DebugV10;ReleaseV10</Configurations>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -46,10 +46,6 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net46'">
     <PackageReference Include="System.ValueTuple" Version="4.4.0" />
   </ItemGroup>
 

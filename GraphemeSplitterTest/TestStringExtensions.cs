@@ -3,6 +3,7 @@ using System.Text;
 using Xunit;
 using GraphemeSplitter;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace GraphemeSplitterTest
 {
@@ -44,7 +45,7 @@ namespace GraphemeSplitterTest
             var expected = new[] { "a", "á", "α", "ℵ", "А", "あ", "亜", "🐭", "👩", "𩸽" };
 
             Span<byte> utf32Bytes = Encoding.UTF32.GetBytes(s);
-            var expectedCodePoints = utf32Bytes.NonPortableCast<byte, uint>();
+            var expectedCodePoints = MemoryMarshal.Cast<byte, uint>(utf32Bytes);
 
             var actual = s.GetCodePoints().ToArray();
 
@@ -93,7 +94,7 @@ namespace GraphemeSplitterTest
             foreach (var x in expected)
             {
                 var y = x.GetGraphemes().ToArray();
-                Assert.Equal(1, y.Length);
+                Assert.Single(y);
             }
 
             var actual = s.GetGraphemes().ToArray();
