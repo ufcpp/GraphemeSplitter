@@ -13,11 +13,15 @@
     <PackageTags>Unicode, grapheme, grapheme cluster</PackageTags>
     <RepositoryUrl>https://github.com/ufcpp/GraphemeSplitter</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ufcpp/GraphemeSplitter</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/ufcpp/GraphemeSplitter/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Nobuyuki Iwanaga</Copyright>
     <Version>1.0.1</Version>
   </PropertyGroup>
 
+  <ItemGroup>
+      <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+  
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>$(DefineConstants);UnicodeVersionV10</DefineConstants>
   </PropertyGroup>
