@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.0;net35</TargetFrameworks>
     <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
     <Configurations>$(Configurations);DebugV9;ReleaseV9;DebugV10;ReleaseV10</Configurations>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Nobuyuki Iwanaga</Authors>
