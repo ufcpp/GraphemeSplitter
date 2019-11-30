@@ -29,14 +29,12 @@ namespace GraphemeSplitter
             private string _str;
             private int _index;
             private int _count;
-            private uint _prev;
 
             public GraphemeEnumerator(string s)
             {
                 _str = s;
                 _index = 0;
                 _count = 0;
-                _prev = 0;
             }
 
             /// <summary><see cref="IEnumerator{T}.Current"/></summary>
