@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.0;net35</TargetFrameworks>
@@ -8,14 +8,14 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Nobuyuki Iwanaga</Authors>
     <Company />
-    <PackageReleaseNotes>Optimization (GetGraphemeBreakProperty method is changed from a switch to a binary-search if)</PackageReleaseNotes>
+    <PackageReleaseNotes>nullable annotated</PackageReleaseNotes>
     <Description>A C# implementation of the Unicode grapheme cluster breaking algorithm</Description>
     <PackageTags>Unicode, grapheme, grapheme cluster</PackageTags>
     <RepositoryUrl>https://github.com/ufcpp/GraphemeSplitter</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ufcpp/GraphemeSplitter</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Nobuyuki Iwanaga</Copyright>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
