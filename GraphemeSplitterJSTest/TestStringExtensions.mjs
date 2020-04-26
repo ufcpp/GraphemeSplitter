@@ -2,7 +2,7 @@
 
 import Assert from './Assert.mjs'
 //import gsplit from './NullSplitter.mjs'
-import gsplit from '../GraphemeSplitter/StringSplitter.mjs'
+import gsplit from '../GraphemeSplitterJS/StringSplitter.mjs'
 
 const GetGraphemes = function(s, ...expected) {
     for (const x of expected) {

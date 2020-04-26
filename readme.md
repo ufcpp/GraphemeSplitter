@@ -1,8 +1,18 @@
 # GraphemeSplitter
 
-A C# implementation of the Unicode grapheme cluster breaking algorithm.
+A C# implementation of the Unicode grapheme cluster breaking algorithm.  
+A JavaScript implementation of the Unicode grapheme cluster breaking algorithm.  
 
-## NuGet package
+## Sample JavaScript
+
+in web app
+```
+import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.mjs'
+
+console.log(gsplit.split("👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦")) // 👨‍👨‍👧‍👦, 👩‍👩‍👧‍👦, 👨‍👨‍👧‍👦
+```
+
+## NuGet package (C#)
 
 https://www.nuget.org/packages/GraphemeSplitter/
 
@@ -10,7 +20,7 @@ https://www.nuget.org/packages/GraphemeSplitter/
 Install-Package GraphemeSplitter
 ```
 
-## Sample
+## Sample (C#)
 
 ```cs
 using GraphemeSplitter;
