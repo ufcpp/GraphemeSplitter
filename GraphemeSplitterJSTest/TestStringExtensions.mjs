@@ -1,8 +1,8 @@
 ﻿// orginal code: https://github.com/taisukef/GraphemeSplitter/blob/master/GraphemeSplitterTest/TestStringExtensions.cs
 
-import Assert from './Assert.mjs'
+import gsplit from '../GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
 //import gsplit from './NullSplitter.mjs'
-import gsplit from '../GraphemeSplitterJS/StringSplitter.mjs'
+import Assert from './Assert.mjs'
 
 const GetGraphemes = function(s, ...expected) {
     for (const x of expected) {
