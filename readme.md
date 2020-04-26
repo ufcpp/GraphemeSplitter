@@ -5,12 +5,12 @@ A JavaScript implementation of the Unicode grapheme cluster breaking algorithm.
 
 ## Sample (JavaScript)
 
-in web app
 ```
 import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
 
 console.log(gsplit.split("👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦")) // 👨‍👨‍👧‍👦, 👩‍👩‍👧‍👦, 👨‍👨‍👧‍👦
 ```
+https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJSTest/  
 
 ## NuGet package (C#)
 
