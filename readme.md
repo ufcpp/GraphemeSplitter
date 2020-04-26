@@ -3,7 +3,7 @@
 A C# implementation of the Unicode grapheme cluster breaking algorithm.  
 A JavaScript implementation of the Unicode grapheme cluster breaking algorithm.  
 
-## Sample JavaScript
+## Sample (JavaScript)
 
 in web app
 ```
