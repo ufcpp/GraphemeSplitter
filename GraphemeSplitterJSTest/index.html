@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'/>
+<title>GraphemeSplitter JavaScript sample</title></head>
+<body><h1>GraphemeSplitter JavaScript sample</h1>
+
+<textarea id='input'>👨‍👨‍👧‍👦👩‍👩‍👧‍👦👨‍👨‍👧‍👦</textarea>
+→
+<textarea id='output'></textarea>
+
+<script type='module'>
+import gsplit from 'https://taisukef.github.io/GraphemeSplitter/GraphemeSplitterJS/StringSplitter.Grapheme.mjs'
+
+const f = function() {
+  const s = input.value
+  output.textContent = gsplit.split(s)
+}
+f()
+input.onchange = input.onkeyup = f
+</script>
+
+<hr>
+APP: CC BY <a href=https://fukuno.jig.jp/2831>@taisukef</a><br>
+LIB: MIT <a href=https://github.com/taisukef/GraphemeSplitter>GraphemeSplitter src on GitHub</a>
+</body>
+</html>
