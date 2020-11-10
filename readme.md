@@ -2,6 +2,11 @@
 
 A C# implementation of the Unicode grapheme cluster breaking algorithm.
 
+## **Notes**
+
+- This library uses Unicode 10.0 version of grepheme boundary algorithm.
+- In .NET 5.0, [`StringInfo.GetTextElementEnumerator `](https://docs.microsoft.com/en-us/dotnet/api/system.globalization.stringinfo.gettextelementenumerator) can enumerate graphemes correctly with Unicode 13.0 algorithm.
+
 ## NuGet package
 
 https://www.nuget.org/packages/GraphemeSplitter/
